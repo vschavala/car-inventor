@@ -109,7 +109,7 @@
 				let formData = new FormData(myForm);
                 axios.post('/carmodel', formData)
                     .then(function (resp) {
-                        alert(JSON.stringify(resp));
+                        
                         if(resp){
                             $('#manufaturer').modal('show');
                             $("#carmodel")[0].reset();
@@ -120,20 +120,7 @@
                         alert("Could not create your company");
                     });
             },
-            getResult() {
-                
-                axios.get('/manufacturers-data')
-                    .then(function (resp) {
-                        
-                        if(resp){
-                           
-                        }
-                    })
-                    .catch(function (resp) {
-                        console.log(resp);
-                        alert("No data");
-                    });
-            },
+            
             addModel(){
             	location.href = '/inventoryview';
         }

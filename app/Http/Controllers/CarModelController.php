@@ -18,6 +18,16 @@ class CarModelController extends Controller
     private $REGNUMBER = 'registration_number';
     private $IMAGE1 = 'image1';
     private $IMAGE2 = 'image2';
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +64,7 @@ class CarModelController extends Controller
             $this->REGNUMBER => 'required',
             
         ])->validate();
-        $manufacturer_name = Manufacturer::where('id',1)->first();
+        $manufacturer_name = Manufacturer::where('id',$request->manufacturer_id)->first();
         $carmodel = new Carmodel();
         $carmodel->model_name = $request->model_name;
         $carmodel->manufacturer_id = $request->manufacturer_id;
@@ -121,10 +131,5 @@ class CarModelController extends Controller
         //
     }
 
-     public function Manufacturers()
-    {
-         $manufacturers = Manufacturer::get();
-
-         return $manufacturers;
-    }
+    
 }

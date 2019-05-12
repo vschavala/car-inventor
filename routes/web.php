@@ -21,4 +21,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('manufacturer', 'ManufacturerController');
 Route::resource('carmodel', 'CarModelController');
 Route::resource('inventoryview', 'InventoryController');
-Route::get('manufacturers-data', 'CarModelController@Manufacturers');
