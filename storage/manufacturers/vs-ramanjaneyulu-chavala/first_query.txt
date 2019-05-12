@@ -1,0 +1,19 @@
+SELECT	m.client_id
+					    , sent
+					    , delivered
+					    , opened
+					    , clicked
+					    , (MATCH(subject) AGAINST ("gift")*5)/100  AS `overlap`   
+					    , word_count
+					    FROM sl_mailing m				 
+					     LEFT JOIN sl_client_sector cs ON (m.client_id=cs.client_id) 
+						WHERE 1=1
+						 AND cs.sector_id=3
+						
+						
+						
+						
+						AND m.client_id  IN (504,877)
+						
+						
+						HAVING   `overlap` >= 0.1
